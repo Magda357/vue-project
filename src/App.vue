@@ -1,13 +1,21 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <BaseCard />
+  </div>
 </template>
 
 <script>
-import {Card} from "components/Card.vue";
+import {BaseCard} from "./components/BaseCard.vue";
+import {stockService} from "./services/stockService";
+import axios from "axios";
 
 export default {
   name: "App",
-  components: {Card},
+  components: {BaseCard, stockService, axios},
+  async created() {
+    this.data = await stockService.fetchData($AAPL);
+    console.log(this.data);
+  },
 };
 </script>
 
@@ -15,6 +23,7 @@ export default {
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 #app {
   background: rgba(1, 31, 53, 1);
