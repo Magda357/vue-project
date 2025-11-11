@@ -2,8 +2,6 @@
   <div class="card">
     <h1>Base Card Component Überschrift</h1>
     <p>dies ist ein beispiel</p>
-
-    <slot></slot>
   </div>
 </template>
 

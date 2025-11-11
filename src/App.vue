@@ -5,16 +5,15 @@
 </template>
 
 <script>
-import {BaseCard} from "./components/BaseCard.vue";
-import {stockService} from "./services/stockService";
-import axios from "axios";
-
+import BaseCard from "./components/BaseCard.vue";
+import {stockService} from "@/services/stockService";
 export default {
   name: "App",
-  components: {BaseCard, stockService, axios},
+  components: {BaseCard},
+
   async created() {
-    this.data = await stockService.fetchData($AAPL);
-    console.log(this.data);
+    this.data = await stockService.fetchData("$AAPL");
+    console.log("loaded data:", this.data);
   },
 };
 </script>
