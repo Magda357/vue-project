@@ -3,6 +3,7 @@
     <AppHeader />
 
     <BaseCard />
+    <CurrentRevenueWidget />
   </div>
 </template>
 
@@ -10,9 +11,11 @@
 import BaseCard from "./components/BaseCard.vue";
 import {stockService} from "./services/stockService";
 import AppHeader from "./components/AppHeader.vue";
+import CurrentRevenueWidget from "./components/CurrentRevenueWidget.vue";
+
 export default {
   name: "App",
-  components: {AppHeader, BaseCard},
+  components: {AppHeader, BaseCard, CurrentRevenueWidget},
 
   async created() {
     this.data = await stockService.fetchData("$AAPL");

@@ -1,8 +1,5 @@
 <template>
-  <div class="card">
-    <h1>Base Card Component Überschrift</h1>
-    <p>dies ist ein beispiel</p>
-  </div>
+  <div class="card"></div>
 </template>
 
 <script setup></script>

@@ -1,8 +1,8 @@
 <template>
   <header>
     <svg
-      width="120"
-      height="60"
+      width="150"
+      height="70"
       viewBox="0 0 96 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
