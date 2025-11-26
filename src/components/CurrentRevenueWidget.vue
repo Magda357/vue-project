@@ -8,8 +8,8 @@
               <img :src="card.icon" :alt="card.company" class="m7-logo" />
               <span class="m7-chip__name">{{ card.company }}</span>
             </div>
-            <div class="m7-badge">Revenue {{ card.quarter || "—" }}</div>
           </div>
+          <div class="m7-badge">Revenue {{ card.quarter || "—" }}</div>
 
           <div class="m7-card__value">
             <span class="m7-number">{{ card.revenueFmt }}</span>
@@ -113,7 +113,23 @@ onMounted(async () => {
     const data = await res.json();
     if (!Array.isArray(data))
       throw new Error("Unerwartete API-Antwort (kein Array).");
+    // Umsatz aus dem letzten Quartal (z.B. 'Dec 21') auslesen
+    let lastQuarter = "Dec 21";
+    let revenueValue = null;
+    for (const obj of data) {
+      if (
+        obj[lastQuarter] &&
+        !isNaN(parseFloat(obj[lastQuarter].replace(/,/g, "")))
+      ) {
+        revenueValue = obj[lastQuarter];
+        break;
+      }
+    }
+    // Zeige Wert in Konsole
+    console.log("Letzter Quartalsumsatz:", revenueValue);
     rows.value = data;
+    // Optional: Zeige Wert im Template
+    // Du kannst revenueValue im Template anzeigen lassen
   } catch (e) {
     error.value = `Fehler beim Laden: ${e.message}`;
   } finally {
@@ -279,7 +295,6 @@ function freshnessRank(qtrStr) {
 
 /* badge */
 .m7-badge {
-  background: rgba(255, 255, 255, 0.06);
   color: #b8c4d9;
   padding: 4px 8px;
   border-radius: 999px;
