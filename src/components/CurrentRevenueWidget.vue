@@ -100,6 +100,16 @@ const M7 = [
   },
 ];
 
+const REVENUE_ROW_INDEX = {
+  AAPL: 4,
+  AMZN: 8,
+  GOOGL: 4,
+  META: 4,
+  MSFT: 8,
+  NVDA: 4,
+  TSLA: 12,
+};
+
 const loading = ref(true);
 const error = ref("");
 const rows = ref([]);
